@@ -4,8 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="测试页面, qingyuchuxue&#39;s blog">
-    <meta name="description" content="">
+    <meta name="keywords" content="qingyuchuxue&#39;s blog">
+    <meta name="description" content="绪论  现代公钥密码系统中，远远不止RSA、DSA、ECC等广为人知的公钥密码系统，最近还学习到了一种比较新的公钥密码系统 —— paillier cryptosystem 。
+介绍  Paillier密码，于1999年由Pascal Pa">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>测试页面 | qingyuchuxue&#39;s blog</title>
+    <title>qingyuchuxue&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -38,7 +39,9 @@
 
 
 
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
     <link rel="stylesheet" href="/css/post.css">
+
 
 
 
@@ -50,7 +53,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.3.0"></head>
+<meta name="generator" content="Hexo 6.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -332,12 +335,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">测试页面</h1>
+                    <h1 class="description center-align post-title"></h1>
                 </div>
             </div>
         </div>
@@ -347,35 +350,24 @@
 
 
 
-<main class="container content">
+<main class="post-container content">
 
     
-    <!-- 文章内容详情 -->
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
 <div id="artDetail">
     <div class="card">
         <div class="card-content article-info">
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/hexo/">
-                                <span class="chip bg-color">hexo</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/hexo/" class="post-category">
-                                hexo
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -384,28 +376,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-09-29
+                    2022-11-06
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-29
+                    2022-11-21
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    1.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    6 分
                 </div>
                 
 
@@ -425,7 +417,129 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h2 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h2><p>  现代公钥密码系统中，远远不止RSA、DSA、ECC等广为人知的公钥密码系统，最近还学习到了一种比较新的公钥密码系统 —— <strong>paillier cryptosystem</strong> 。</p>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>  Paillier密码，于1999年由Pascal Paillier发明，是一种用于公钥加密的概率非对称算法。该算法具有加法同态的性质。</p>
+<h3 id="1：什么是同态加密？"><a href="#1：什么是同态加密？" class="headerlink" title="1：什么是同态加密？"></a>1：什么是同态加密？</h3><p><strong>同态加密（Homomorphic Encryption, HE）</strong> 是指满足密文同态运算性质的加密算法，即数据经过同态加密之后，对密文进行特定的计算，得到的密文计算结果在进行对应的同态解密后的明文等同于对明文数据直接进行相同的计算，实现数据的“可算不可见”。同态加密的实现效果如图所示。</p>
+<p><img src="/../images/paillier%20cryptosystem/image-20221106183020259.png"></p>
+<p>同态加密通常为非对称性加密。因此在介绍同态加密之前，简单介绍一下非对称性加密。非对称性加密分为三个步骤：</p>
+<ol>
+<li><p>生成一对钥匙，一个公钥pub和一个密钥priv；</p>
+</li>
+<li><p>使用公钥pub加密原始数据，得到加密数据，公式：pub(原始数据）&#x3D; 加密数据 ；</p>
+</li>
+<li><p>使用密钥priv解密加密数据，得到原始数据，公式：priv(加密数据）&#x3D; 原始数据 。</p>
+</li>
+</ol>
+<p>同态加密允许对加密数据进行处理，得到的解密结果等价于在原始数据下做运算。以下面即将学习用到的Paillier算法举例，假设我有两个数m1和m2，我希望把它们扔给第三方做加法运算，即m1+m2。同时不希望第三方知道m1、m2及它们之和的具体值，同态加密可以派上用场，具体步骤如下：</p>
+<p><img src="/../images/paillier%20cryptosystem/image-20221121161443773.png"></p>
+<h3 id="2：同态加密算法原理"><a href="#2：同态加密算法原理" class="headerlink" title="2：同态加密算法原理"></a>2：同态加密算法原理</h3><p>如果一种同态加密算法支持对密文进行任意形式的计算，则称其为全同态加密（Fully Homomorphic Encryption,  FHE）；如果支持对密文进行部分形式的计算，例如仅支持加法、仅支持乘法或支持有限次加法和乘法，则称其为半同态加密或部分同态加密，英文简称为SWHE（Somewhat Homomorphic Encryption）或PHE（Partially Homomorphic  Encryption）。一般而言，由于任意计算均可通过加法和乘法构造，若加密算法同时满足加法同态性和乘法同态性，则可称其满足全同态性。</p>
+<h3 id="3：主流同态加密算法原理"><a href="#3：主流同态加密算法原理" class="headerlink" title="3：主流同态加密算法原理"></a>3：主流同态加密算法原理</h3><p>（1）乘法同态加密算法</p>
+<p>在实际应用中，密文乘法同态性的需求场景不多，因此乘法同态性通常偶然存在于已有的经典加密算法中。满足乘法同态特性的典型加密算法包括1977年提出的RSA公钥加密算法和1985年提出的ElGamal公钥加密算法等。<br> ① RSA算法<br>  RSA算法是最为经典的公钥加密算法，至今已有40余年的历史，其安全性基于大整数分解困难问题。在实际应用中，RSA算法可采用RSA_PKCS1_PADDING、RSA_PKCS1_OAEP_PADDING等填充模式，根据密钥长度（常用1024位或2048位）对明文分组进行填充，而只有不对明文进行填充的原始RSA算法才能满足乘法同态特性。由于原始的RSA不是随机化加密算法，即加密过程中没有使用随机因子，每次用相同密钥加密相同明文的结果是固定的。因此，利用RSA的乘法同态性实现同态加密运算会存在安全弱点，攻击者可能通过选择明文攻击得到原始数据。<br> ② ElGamal算法</p>
+<p>ElGamal算法是一种基于Diffie-Hellman离散对数困难问题的公钥密码算法，可实现公钥加密和数字签名功能，同时满足乘法同态特性。ElGamal是一种随机化加密算法，即使每次用相同密钥加密相同明文得到的密文结果也不相同，因此不存在与RSA算法类似的选择明文攻击问题，是ISO同态加密国际标准中唯一指定的乘法同态加密算法。</p>
+<p>（2）加法同态加密算法</p>
+<p>Paillier算法是1999年提出的一种基于合数剩余类问题的公钥加密算法，</p>
+<p><img src="/../images/paillier%20cryptosystem/image-20221106190503920.png"></p>
+<p>也是目前最为常用且最具实用性的加法同态加密算法，已在众多具有同态加密需求的应用场景中实现了落地应用，同时也是ISO同态加密国际标准中唯一指定的加法同态加密算法。此外，由于支持加法同态，所以Paillier算法还可支持数乘同态，即支持密文与明文相乘。</p>
+<p>（3）全同态加密算法</p>
+<p>Gentry算法是2009年IBM的Craig Gentry首次提出的一种基于理想格的全同态算法。(第一代全同态加密)，还有第二代、第三代全同态加密。</p>
+<h2 id="密钥生成"><a href="#密钥生成" class="headerlink" title="密钥生成"></a>密钥生成</h2><h3 id="第一种模式："><a href="#第一种模式：" class="headerlink" title="第一种模式："></a>第一种模式：</h3><pre class=" language-html"><code class="language-html">随机选择两个大质数p、q满足gcd(pq,(p−1)⋅(q−1))=1。
+
+
+
+计算n=p⋅q，λ=lcm(p−1,q−1)=(p−1)⋅(q−1)/gcd(p−1,q−1)
+
+
+
+选择随机整数g，0&lt;g&lt;n^2
+
+
+
+定义L(x)=(x−1)/n
+
+
+
+计算μ=(L(g^λ(mod n^2)))^−1(mod n)
+
+
+
+公钥为(n，g)
+
+
+
+私钥为(λ，μ)
+</code></pre>
+<h3 id="第二种模式（比较简单）："><a href="#第二种模式（比较简单）：" class="headerlink" title="第二种模式（比较简单）："></a>第二种模式（比较简单）：</h3><p>其余参数不变，主要改变了g，λ，μ的定义</p>
+<ol>
+<li><p>g&#x3D;n+1</p>
+</li>
+<li><p>λ&#x3D;φ(n)&#x3D;(p−1)⋅(q−1)</p>
+</li>
+<li><p>μ&#x3D;φ(n)^−1(mod n)</p>
+</li>
+</ol>
+<h2 id="加密"><a href="#加密" class="headerlink" title="加密"></a>加密</h2><ol>
+<li><p>设m为要加密的消息，显然需要满足，0≤m＜n</p>
+</li>
+<li><p>选择随机 r，保证gcd( r,n )&#x3D;1</p>
+</li>
+<li><p>密文c：c&#x3D;g^m⋅r^n( mod n^2 )</p>
+</li>
+</ol>
+<h2 id="解密"><a href="#解密" class="headerlink" title="解密"></a>解密</h2><p>m&#x3D;( L ( c^λ ( mod n^2))⋅ μ ) mod n</p>
+<h2 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h2><p>以下推理过程就用数学公式记录了，如果平台显示不出来的话，建议复制进typora等此类编辑器中食用，下面也会给出截图</p>
+<h3 id="第一种模式"><a href="#第一种模式" class="headerlink" title="第一种模式"></a>第一种模式</h3><p><img src="/../images/paillier%20cryptosystem/image-20221106192821957.png"></p>
+<p>因为</p>
+<p><img src="/../images/paillier%20cryptosystem/image-20221106195244976.png"></p>
+<p>所以</p>
+<p><img src="/../images/paillier%20cryptosystem/image-20221106195257375.png" alt="image-20221106195257375"></p>
+<p>即</p>
+<p><img src="/../images/paillier%20cryptosystem/image-20221106195356794.png"></p>
+<h3 id="第二种模式"><a href="#第二种模式" class="headerlink" title="第二种模式"></a>第二种模式</h3><p><img src="/../images/paillier%20cryptosystem/image-20221106192849064.png"></p>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="DASCTF四月月赛-not-RSA"><a href="#DASCTF四月月赛-not-RSA" class="headerlink" title="DASCTF四月月赛 not RSA"></a>DASCTF四月月赛 not RSA</h3><pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Util<span class="token punctuation">.</span>number <span class="token keyword">import</span> getPrime <span class="token keyword">as</span> bytes_to_long
+<span class="token keyword">from</span> secret <span class="token keyword">import</span> flag<span class="token punctuation">,</span>p<span class="token punctuation">,</span>q
+<span class="token keyword">from</span> sympy <span class="token keyword">import</span> isprime<span class="token punctuation">,</span>nextprime
+<span class="token keyword">import</span> random
+
+m<span class="token operator">=</span>bytes_to_long<span class="token punctuation">(</span>flag<span class="token punctuation">)</span>
+n<span class="token operator">=</span>p<span class="token operator">*</span>q
+g<span class="token operator">=</span>n<span class="token operator">+</span><span class="token number">1</span>
+r<span class="token operator">=</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>n<span class="token punctuation">)</span>
+
+c<span class="token operator">=</span><span class="token punctuation">(</span>pow<span class="token punctuation">(</span>g<span class="token punctuation">,</span>m<span class="token punctuation">,</span>n<span class="token operator">*</span>n<span class="token punctuation">)</span><span class="token operator">*</span>pow<span class="token punctuation">(</span>r<span class="token punctuation">,</span>n<span class="token punctuation">,</span>n<span class="token operator">*</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">%</span><span class="token punctuation">(</span>n<span class="token operator">*</span>n<span class="token punctuation">)</span>
+
+<span class="token keyword">print</span> <span class="token string">"c=%d"</span><span class="token operator">%</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span>
+<span class="token keyword">print</span> <span class="token string">"n=%d"</span><span class="token operator">%</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span>
+</code></pre>
+<p>可以看到，这一题就是用的paillier cryptosystem，并且参数用的是上文中的第二种简单的模式</p>
+<p>但是我们计算λ&#x3D;φ(n)&#x3D;(p−1)⋅(q−1) ，需要用到p和q</p>
+<p>这里我们直接用yafu尝试分解n发现可以成功分解，原理是p与q其实非常接近，所以其实直接对n开根然后再在附近寻找素数就能找到p、q了。</p>
+<p><img src="/../images/paillier%20cryptosystem/image-20221106200653988.png"></p>
+<p>所以构造解密脚本</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># -*- coding: utf-8 -*-</span>
+<span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Util<span class="token punctuation">.</span>number <span class="token keyword">import</span> long_to_bytes<span class="token punctuation">,</span>inverse
+<span class="token keyword">from</span> sympy <span class="token keyword">import</span> nextprime
+<span class="token keyword">from</span> gmpy2 <span class="token keyword">import</span> iroot
+
+<span class="token keyword">def</span> <span class="token function">L</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>x<span class="token number">-1</span><span class="token punctuation">)</span><span class="token operator">/</span>n
+
+
+c<span class="token operator">=</span><span class="token number">29088911054711509252215615231015162998042579425917914434962376243477176757448053722602422672251758332052330100944900171067962180230120924963561223495629695702541446456981441239486190458125750543542379899722558637306740763104274377031599875275807723323394379557227060332005571272240560453811389162371812183549</span>
+
+n<span class="token operator">=</span><span class="token number">6401013954612445818165507289870580041358569258817613282142852881965884799988941535910939664068503367303343695466899335792545332690862283029809823423608093</span>
+
+p<span class="token operator">=</span><span class="token number">80006336965345725157774618059504992841841040207998249416678435780577798937819</span>
+
+q<span class="token operator">=</span><span class="token number">80006336965345725157774618059504992841841040207998249416678435780577798937447</span>
+
+<span class="token comment" spellcheck="true">#根据解密公式，计算所需私钥对（λ，μ）</span>
+Lambda<span class="token operator">=</span><span class="token punctuation">(</span>p<span class="token number">-1</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>q<span class="token number">-1</span><span class="token punctuation">)</span>
+miu<span class="token operator">=</span>inverse<span class="token punctuation">(</span>Lambda<span class="token punctuation">,</span>n<span class="token operator">*</span>n<span class="token punctuation">)</span>
+m<span class="token operator">=</span><span class="token punctuation">(</span>L<span class="token punctuation">(</span>pow<span class="token punctuation">(</span>c<span class="token punctuation">,</span>Lambda<span class="token punctuation">,</span>n<span class="token operator">**</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>n<span class="token punctuation">)</span><span class="token operator">*</span>miu<span class="token punctuation">)</span><span class="token operator">%</span>n
+
+<span class="token keyword">print</span> <span class="token punctuation">(</span>long_to_bytes<span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+
                 
             </div>
             <hr/>
@@ -451,7 +565,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2022/09/29/test/">http://example.com/2022/09/29/test/</a>
+                    <a href="https://qingyuchuxue.github.io/2022/11/06/paillier%20cryptosystem/">https://qingyuchuxue.github.io/2022/11/06/paillier%20cryptosystem/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -488,11 +602,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/hexo/">
-                                    <span class="chip bg-color">hexo</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -569,18 +679,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/09/29/test/">
+                <a href="/2022/11/21/%E5%85%AC%E5%BC%80%E8%B5%9B%E9%81%93-%E6%99%B4%E9%9B%A8%E5%88%9D%E9%9B%AA-UNCTF-WP/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="测试页面">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
                         
-                        <span class="card-title">测试页面</span>
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -590,29 +699,16 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-29
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-11-21
+                        </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/hexo/" class="post-category">
-                                    hexo
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            qingyuchuxue
                             
                         </span>
                     </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/hexo/">
-                        <span class="chip bg-color">hexo</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -621,16 +717,16 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/09/29/test/">
+                <a href="/2022/09/26/hello-world/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="测试页面">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
                         
-                        <span class="card-title">测试页面</span>
+                        <span class="card-title">Hello World</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -641,28 +737,15 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-29
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-26
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/hexo/" class="post-category">
-                                    hexo
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            qingyuchuxue
                             
                         </span>
                     </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/hexo/">
-                        <span class="chip bg-color">hexo</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -695,6 +778,87 @@
 <script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
 
     
 
@@ -773,7 +937,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">0</span>
+                        class="white-color">5k</span>
             
             
             
